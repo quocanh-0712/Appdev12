@@ -176,6 +176,7 @@
     <Compile Include="Controllers\ManageUsersController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\TraineeCoursesController.cs" />
+    <Compile Include="Controllers\TrainerTopicsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +192,10 @@
     <Compile Include="Migrations\202102101110457_hjkw.Designer.cs">
       <DependentUpon>202102101110457_hjkw.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102170558450_trainer111.cs" />
+    <Compile Include="Migrations\202102170558450_trainer111.Designer.cs">
+      <DependentUpon>202102170558450_trainer111.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -201,11 +206,14 @@
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Models\Trainee.cs" />
     <Compile Include="Models\TraineeCourse.cs" />
+    <Compile Include="Models\Trainer.cs" />
+    <Compile Include="Models\TrainerTopic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\CourseCategoryViewModel.cs" />
     <Compile Include="ViewModel\TopicCourseViewModel.cs" />
     <Compile Include="ViewModel\TraineeCourseViewModel.cs" />
+    <Compile Include="ViewModel\TrainerTopicViewModel.cs" />
     <Compile Include="ViewModel\Users_In_Role.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -287,6 +295,9 @@
     <Content Include="Views\TraineeCourses\Edit.cshtml" />
     <Content Include="Views\TraineeCourses\Create.cshtml" />
     <Content Include="Views\TraineeCourses\AssignExistTraineeCourse.cshtml" />
+    <Content Include="Views\TrainerTopics\Index.cshtml" />
+    <Content Include="Views\TrainerTopics\Create.cshtml" />
+    <Content Include="Views\TrainerTopics\AssignExistTrainerTopic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -313,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102101110457_hjkw.resx">
       <DependentUpon>202102101110457_hjkw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102170558450_trainer111.resx">
+      <DependentUpon>202102170558450_trainer111.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

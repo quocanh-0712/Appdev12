@@ -110,3 +110,4 @@ C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.Migration
 C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.csproj.GenerateResource.cache
 C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.Migrations.CreateStaff.resources
 C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.Migrations.hjkw.resources
+C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.Migrations.trainer111.resources
