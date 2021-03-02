@@ -16,6 +16,7 @@ namespace WebApplication11.Models
         }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
         public DbSet<Trainee> Trainees { get; set; }
         public DbSet<TraineeCourse> TraineeCourses { get; set; }
         public DbSet<Trainer> Trainers { get; set; }

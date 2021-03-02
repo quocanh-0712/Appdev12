@@ -9,16 +9,20 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication11.Models;
+using WebApplication11.ViewModel;
 using WebApplication11.ViewModels;
 
 namespace WebApplication11.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ManageUsersController : Controller
     {
         private ApplicationDbContext _context;
+        private UserManager<IdentityUser> _userManager;
         public ManageUsersController()
         {
             _context = new ApplicationDbContext();
+            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>());
         }
         // GET: ManageUsers
         [HttpGet]
@@ -48,9 +52,9 @@ namespace WebApplication11.Controllers
                                       Email = p.Emailaddress,
                                       Role = string.Join(",", p.RoleNames) //(join) Combine the selected value above to display
                                   });
-
-
-            return View(usersWithRoles);
+            var except_user = _context.Users.Where(t => t.Id == "21482491-95b7-46f6-913c-adca4d4d84b4");
+            var user_in_role = _context.Users.Except(except_user).ToList();
+            return View(user_in_role);
         }
 
         [HttpGet]
@@ -148,5 +152,28 @@ namespace WebApplication11.Controllers
             _context.SaveChanges();
             return RedirectToAction("UsersWithRoles", "ManageUsers");
         }
+        [Authorize(Roles ="Admin")]
+        public ActionResult ChangeUserPassword(string id)
+        {
+            var user = _context.Users.SingleOrDefault(t => t.Id == id);
+            var adminChangePass = new AdminChangePasswordViewModel()
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+            };
+            return View(adminChangePass);
+        }
+        [HttpPost]
+        public async Task<ActionResult> ChangeUserPassword(AdminChangePasswordViewModel model)
+        {
+            var user = _context.Users.Where(t => t.Id == model.UserId).First();
+            if(user.PasswordHash != null)
+            {
+                await _userManager.RemovePasswordAsync(user.Id);
+            }
+            await _userManager.AddPasswordAsync(user.Id,model.NewPassword);
+            return RedirectToAction("UsersWithRoles","ManageUsers");
+        }
+
     }
 }

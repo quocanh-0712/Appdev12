@@ -111,3 +111,6 @@ C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.csproj.Ge
 C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.Migrations.CreateStaff.resources
 C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.Migrations.hjkw.resources
 C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.Migrations.trainer111.resources
+C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.Migrations.UpdateWholeDb.resources
+C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.Migrations.AddStaff.resources
+C:\Users\DELL\Source\Repos\WebApplication11\obj\Debug\WebApplication11.Migrations.AddStaff1.resources

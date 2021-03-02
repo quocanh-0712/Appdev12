@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication11.ViewModels.Users_In_Role>
+﻿@model List<WebApplication11.Models.ApplicationUser>
 
 @{ ViewBag.Title = "Users With Roles"; }
 
@@ -15,21 +15,19 @@
             <tr>
                 <th>UserName</th>
                 <th>Email</th>
-                <th>Role</th>
                 <th>Edit</th>
                 <th>Delete</th>
-
+                <th>Change Password</th>
             </tr>
         </thead>
         @foreach (var user in Model)
         {
             <tr>
-                <td>@user.Username</td>
+                <td>@user.Name</td>
                 <td>@user.Email</td>
-                <td>@user.Role</td>
-                <td>@Html.ActionLink("Edit", "Edit", new { id = user.UserId })</td>
-                <td>@Html.ActionLink("Delete", "Delete", new { id = user.UserId })</td>
-
+                <td>@Html.ActionLink("Edit", "Edit", new { id = user.Id })</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = user.Id })</td>
+                <td>@Html.ActionLink("Change Password", "ChangeUserPassword", new { id = user.Id},new { @class = "btn btn-primary"})</td>
             </tr>
         }
     </table>

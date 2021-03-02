@@ -140,6 +140,7 @@ namespace WebApplication11.Controllers
 
         //
         // GET: /Account/Register
+        [AllowAnonymous]
         public ActionResult Register()
         {
             if (User.IsInRole("Admin"))
@@ -152,13 +153,17 @@ namespace WebApplication11.Controllers
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("TrainingStaff") && !u.Name.Contains("Trainer")).ToList(), "Name", "Name");
                 return View();
             }
-            return View("Login");
+            if (!User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            return View();
         }
 
         //
         // POST: /Account/Register
         [HttpPost]
-        [Authorize(Roles = "Admin,TrainingStaff")]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
@@ -168,7 +173,8 @@ namespace WebApplication11.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+    
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -185,6 +191,7 @@ namespace WebApplication11.Controllers
                         return RedirectToAction("Index", "ManagerStaffViewModels");
 
                     }
+                    return RedirectToAction("Index", "Home");
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
                                  .ToList(), "Name", "Name");

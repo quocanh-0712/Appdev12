@@ -70,7 +70,7 @@ namespace WebApplication11.Models
         [Required]
         [Display(Name = "UserName")]
         public string UserName { get; set; }
-        [Required]
+        
         [Display(Name = "UserRoles")]
         public string UserRoles { get; set; }
         [Required]

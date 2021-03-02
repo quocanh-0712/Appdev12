@@ -24,19 +24,10 @@ namespace WebApplication11
             if (!roleManager.RoleExists("Admin"))
             {
 
-                // first we create Admin rool    
+                // first we create Admin role   
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
-            }
-            var user = new ApplicationUser();
-            user.UserName = "admin";
-            user.Email = "admin@gmail.com";
-            string userPassword = "A123123a@";
-            var checkUser = UserManager.Create(user, userPassword);
-            if (checkUser.Succeeded)
-            {
-                var result1 = UserManager.AddToRole(user.Id, "Admin");
             }
             // creating Creating TrainingStaff role     
             if (!roleManager.RoleExists("TrainingStaff"))
